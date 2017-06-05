@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{equiposinformaticosBean.id}'/>
+		<f:event type="preRenderView" listener='#{equiposinformaticosBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Equiposinformaticos"/>
+
+	<ui:define name="header">
+		Equiposinformaticos
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Equiposinformaticos
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="equiposinformaticosBeanEquiposinformaticosSerie" value="Serie:"/>
+			<h:outputText id="equiposinformaticosBeanEquiposinformaticosSerie" value="#{equiposinformaticosBean.equiposinformaticos.serie}"/>
+			<h:outputText/>
+			<h:outputLabel for="equiposinformaticosBeanEquiposinformaticosMarca" value="Marca:"/>
+			<h:outputText id="equiposinformaticosBeanEquiposinformaticosMarca" value="#{equiposinformaticosBean.equiposinformaticos.marca}"/>
+			<h:outputText/>
+			<h:outputLabel for="equiposinformaticosBeanEquiposinformaticosColor" value="Color:"/>
+			<h:outputText id="equiposinformaticosBeanEquiposinformaticosColor" value="#{equiposinformaticosBean.equiposinformaticos.color}"/>
+			<h:outputText/>
+			<h:outputLabel for="equiposinformaticosBeanEquiposinformaticosEstatus" value="Estatus:"/>
+			<h:outputText id="equiposinformaticosBeanEquiposinformaticosEstatus" value="#{equiposinformaticosBean.equiposinformaticos.estatus}"/>
+			<h:outputText/>
+			<h:outputLabel for="equiposinformaticosBeanEquiposinformaticosModelo" value="Modelo:"/>
+			<h:outputText id="equiposinformaticosBeanEquiposinformaticosModelo" value="#{equiposinformaticosBean.equiposinformaticos.modelo}"/>
+			<h:outputText/>
+			<h:outputLabel for="equiposinformaticosBeanEquiposinformaticosInterfaz" value="Interfaz:"/>
+			<h:outputText id="equiposinformaticosBeanEquiposinformaticosInterfaz" value="#{equiposinformaticosBean.equiposinformaticos.interfaz}"/>
+			<h:outputText/>
+			<h:outputLabel for="equiposinformaticosBeanEquiposinformaticosFechamantto" value="Fechamantto:"/>
+			<h:outputText id="equiposinformaticosBeanEquiposinformaticosFechamantto" value="#{equiposinformaticosBean.equiposinformaticos.fechamantto}"/>
+			<h:outputText/>
+			<h:outputLabel for="equiposinformaticosBeanEquiposinformaticosObservaciones" value="Observaciones:"/>
+			<h:outputText id="equiposinformaticosBeanEquiposinformaticosObservaciones" value="#{equiposinformaticosBean.equiposinformaticos.observaciones}"/>
+			<h:outputText/>
+			<h:outputLabel for="equiposinformaticosBeanEquiposinformaticosFechabaja" value="Fechabaja:"/>
+			<h:outputText id="equiposinformaticosBeanEquiposinformaticosFechabaja" value="#{equiposinformaticosBean.equiposinformaticos.fechabaja}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

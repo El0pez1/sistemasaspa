@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{equiposinformaticosBean.page}'/>
+		<f:event type="preRenderView" listener='#{equiposinformaticosBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Equiposinformaticos entities"/>
+
+	<ui:define name="header">
+		Equiposinformaticos
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Equiposinformaticos entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="equiposinformaticosBeanExampleSerie" value="Serie:"/>
+						<h:panelGroup>
+							<h:inputText id="equiposinformaticosBeanExampleSerie" value="#{equiposinformaticosBean.example.serie}"/>
+							<h:message for="equiposinformaticosBeanExampleSerie" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="equiposinformaticosBeanExampleMarca" value="Marca:"/>
+						<h:panelGroup>
+							<h:inputText id="equiposinformaticosBeanExampleMarca" value="#{equiposinformaticosBean.example.marca}"/>
+							<h:message for="equiposinformaticosBeanExampleMarca" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="equiposinformaticosBeanExampleColor" value="Color:"/>
+						<h:panelGroup>
+							<h:inputText id="equiposinformaticosBeanExampleColor" value="#{equiposinformaticosBean.example.color}"/>
+							<h:message for="equiposinformaticosBeanExampleColor" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="equiposinformaticosBeanExampleEstatus" value="Estatus:"/>
+						<h:panelGroup>
+							<h:inputText id="equiposinformaticosBeanExampleEstatus" value="#{equiposinformaticosBean.example.estatus}"/>
+							<h:message for="equiposinformaticosBeanExampleEstatus" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="equiposinformaticosBeanExampleModelo" value="Modelo:"/>
+						<h:panelGroup>
+							<h:inputText id="equiposinformaticosBeanExampleModelo" value="#{equiposinformaticosBean.example.modelo}"/>
+							<h:message for="equiposinformaticosBeanExampleModelo" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{equiposinformaticosBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{equiposinformaticosBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="equiposinformaticosBeanPageItems" styleClass="data-table" value="#{equiposinformaticosBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Serie"/>
+					</f:facet>
+					<h:link outcome="/equiposinformaticos/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemSerie" value="#{_item.serie}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Marca"/>
+					</f:facet>
+					<h:link outcome="/equiposinformaticos/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemMarca" value="#{_item.marca}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Color"/>
+					</f:facet>
+					<h:link outcome="/equiposinformaticos/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemColor" value="#{_item.color}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Estatus"/>
+					</f:facet>
+					<h:link outcome="/equiposinformaticos/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemEstatus" value="#{_item.estatus}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Modelo"/>
+					</f:facet>
+					<h:link outcome="/equiposinformaticos/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemModelo" value="#{_item.modelo}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{equiposinformaticosBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

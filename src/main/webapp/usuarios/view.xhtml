@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{usuariosBean.id}'/>
+		<f:event type="preRenderView" listener='#{usuariosBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Usuarios"/>
+
+	<ui:define name="header">
+		Usuarios
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Usuarios
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="usuariosBeanUsuariosNombre" value="Nombre:"/>
+			<h:outputText id="usuariosBeanUsuariosNombre" value="#{usuariosBean.usuarios.nombre}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuariosBeanUsuariosContraseña" value="Contraseña:"/>
+			<h:outputText id="usuariosBeanUsuariosContraseña" value="#{usuariosBean.usuarios.contraseña}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuariosBeanUsuariosPerfil" value="Perfil:"/>
+			<h:outputText id="usuariosBeanUsuariosPerfil" value="#{usuariosBean.usuarios.perfil}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuariosBeanUsuariosGrupo" value="Grupo:"/>
+			<h:outputText id="usuariosBeanUsuariosGrupo" value="#{usuariosBean.usuarios.grupo}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuariosBeanUsuariosEquipos" value="Equipos:"/>
+			<h:dataTable id="usuariosBeanUsuariosEquipos" styleClass="data-table" value="#{forgeview:asList(usuariosBean.usuarios.equipos)}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Serie"/>
+					</f:facet>
+					<h:link outcome="/equiposinformaticos/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemSerie" value="#{_item.serie}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Marca"/>
+					</f:facet>
+					<h:link outcome="/equiposinformaticos/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemMarca" value="#{_item.marca}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Color"/>
+					</f:facet>
+					<h:link outcome="/equiposinformaticos/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemColor" value="#{_item.color}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Estatus"/>
+					</f:facet>
+					<h:link outcome="/equiposinformaticos/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemEstatus" value="#{_item.estatus}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Modelo"/>
+					</f:facet>
+					<h:link outcome="/equiposinformaticos/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="_itemModelo" value="#{_item.modelo}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>
